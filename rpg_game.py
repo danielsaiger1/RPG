@@ -1,16 +1,8 @@
-
-""""
-Daniel Saiger
-"""
-
-
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 import random   
 import time
 from enum import Enum
-
-
 
 def delay(seconds: int|float):
     """
@@ -46,7 +38,7 @@ class Character(ABC):
 
     @health.setter
     def health(self, value: int) -> None:
-        self._health = max(0, value)  # ist nicht kleiner als null
+        self._health = max(0, value) 
 
     @abstractmethod
     def attack(self, target: "Character") -> None:
@@ -457,7 +449,7 @@ class Arena:
         battle_counter = 0
         random_int = random.randint(1, 3) 
         names = ['Olaf', 'Erik', 'Bjorn']
-        rand_npc_type = str(NPC_types(random_int).name)
+        rand_npc_type = str(NpcTypes(random_int).name)
         rand_npc_name = names[random_int-1]
         if rand_npc_type == 'Dragon':
             npc = NPC(name=rand_npc_name, health=100, power=1000, npc_type=rand_npc_type) #Dragon is oneshot, because no one wins against a dragon
@@ -482,7 +474,7 @@ class Arena:
             # Create new NPC for next battle
             random_int = random.randint(1, 3) 
             npc.name = names[random_int-1]
-            npc.npc_type = str(NPC_types(random_int).name)
+            npc.npc_type = str(NpcTypes(random_int).name)
             if npc.npc_type == 'Dragon':
                 npc.power = int(npc.power * 1000) # Dragon is oneshot, because nobody wins against a dragon
             else:
